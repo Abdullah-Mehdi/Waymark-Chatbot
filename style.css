@@ -211,7 +211,11 @@ h1 {
   bottom: 90px;
   right: 24px;
   width: 380px;
+  height: 500px;
   max-width: 95vw;
+  max-height: 80vh;
+  min-width: 320px;
+  min-height: 400px;
   background: linear-gradient(145deg, #2a2a36, #323242);
   color: #fff;
   border-radius: 16px;
@@ -225,6 +229,12 @@ h1 {
   transition: opacity 0.2s, visibility 0.2s;
   flex-direction: column;
   gap: 12px;
+  overflow: auto;
+}
+
+/* Remove the built-in resize handle */
+.chatbot-panel {
+  resize: none;
 }
 
 .chatbot-panel.open {
@@ -311,7 +321,7 @@ h1 {
   border-radius: 8px;
   padding: 10px;
   min-height: 60px;
-  max-height: 180px;
+  flex: 1;
   overflow-y: auto;
   font-size: 15px;
   margin-bottom: 8px;
@@ -426,6 +436,56 @@ h1 {
   user-select: none;
   pointer-events: none;
   font-variation-settings: 'wght' 400;
+}
+
+/* Resizing state styles */
+.chatbot-panel.resizing {
+  transition: none;
+  user-select: none;
+}
+
+.chatbot-panel.resizing * {
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Edge-based resize cursors */
+.chatbot-panel.resize-top {
+  cursor: n-resize;
+}
+
+.chatbot-panel.resize-bottom {
+  cursor: s-resize;
+}
+
+.chatbot-panel.resize-left {
+  cursor: w-resize;
+}
+
+.chatbot-panel.resize-right {
+  cursor: e-resize;
+}
+
+.chatbot-panel.resize-top-left {
+  cursor: nw-resize;
+}
+
+.chatbot-panel.resize-top-right {
+  cursor: ne-resize;
+}
+
+.chatbot-panel.resize-bottom-left {
+  cursor: sw-resize;
+}
+
+.chatbot-panel.resize-bottom-right {
+  cursor: se-resize;
+}
+
+.chatbot-panel.open {
+  display: flex; /* Show when open class is present */
+  opacity: 1;
+  visibility: visible;
 }
 
 /* Responsive styles */
